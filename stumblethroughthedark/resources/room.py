@@ -9,6 +9,7 @@ class Room():
         self.name = room_name  # room name key
         self.description = None  # room description to be printed
         self.linked_rooms = {}
+        self.character = None
         self.content = []
 
     def set_description(self, room_description):
@@ -26,6 +27,14 @@ class Room():
     def describe(self):
         """Describe room."""
         print(self.description)
+
+    def set_character(self, character):
+        """Set character inside room."""
+        self.character = character
+
+    def get_character(self):
+        """Get character that's in room."""
+        return self.character
 
     def link_room(self, room_to_link, direction):
         """Links room to neighbour in specific direction."""

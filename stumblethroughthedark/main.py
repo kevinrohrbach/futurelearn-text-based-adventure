@@ -33,11 +33,20 @@ bedroom.link_room(waterroom, 'east')
 madroom.link_room(bedroom, 'south')
 waterroom.link_room(bedroom, 'west')
 
+dave = Enemy("Dave", "A smelly zombie")
+dave.set_conversation("Brrlgrh... rgrhl... brains...")
+dave.set_weakness("cheese")
+
+madroom.set_character(dave)
+
 current_room = bedroom
 
 while True:
     print("\n")
     current_room.get_details()
+    inhabitant = current_room.get_character()
+    if inhabitant is not None:
+        inhabitant.describe()
     command = input("> ")
     current_room = current_room.move(command)
 
