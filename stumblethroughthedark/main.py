@@ -41,14 +41,25 @@ madroom.set_character(dave)
 
 current_room = bedroom
 
-while True:
+dead = False
+
+while dead is False:
     print("\n")
     current_room.get_details()
     inhabitant = current_room.get_character()
     if inhabitant is not None:
         inhabitant.describe()
     command = input("> ")
-    current_room = current_room.move(command)
+    if command in ['north', 'east', 'south', 'west']:
+        current_room = current_room.move(command)
+    elif command == 'talk':
+        inhabitant.talk()
+    elif command == 'fight':
+        print('what would you like to fight with?')
+        weapon = input('> ')
+        inhabitant.fight(weapon)
+        dead = True
+
 
 # TODO: Add list of items
 # TODO: Add list of characters
